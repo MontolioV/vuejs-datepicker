@@ -201,6 +201,13 @@ export default {
     },
     initialView () {
       this.setInitialView()
+    },
+    isOpen (newValue) {
+      if (newValue) {
+        this.$emit('opened')
+      } else {
+        this.$emit('closed')
+      }
     }
   },
   computed: {
@@ -441,9 +448,9 @@ export default {
     close (emitEvent) {
       this.showDayView = this.showMonthView = this.showYearView = false
       if (!this.isInline) {
-        if (emitEvent) {
-          this.$emit('closed')
-        }
+        // if (emitEvent) {
+        //   this.$emit('closed')
+        // }
         document.removeEventListener('click', this.clickOutside, false)
       }
     },
